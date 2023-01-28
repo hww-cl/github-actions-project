@@ -31,7 +31,7 @@ jobs:
       - name: Cypress tests
         uses: cypress-io/github-action@v5
         with:
-          runTests: npx cypress run
+          runTests: npm start
           spec: |
             cypress/e2e/todo.cy.js
 
@@ -45,7 +45,7 @@ jobs:
       - name: Cypress tests
         uses: cypress-io/github-action@v5
         with:
-          runTests: npx cypress run
+          runTests: npm start
           spec: |
             cypress/e2e/todo-*.cy.js
 
