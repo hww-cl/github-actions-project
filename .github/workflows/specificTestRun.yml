@@ -1,0 +1,62 @@
+name: specific test run 
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+jobs:
+  # start:
+    # example where we pass custom base URL
+    # runs-on: ubuntu-22.04
+    # steps:
+    #   - name: Checkout
+    #     uses: actions/checkout@v3
+
+    #   - name: Cypress tests
+    #     uses: ./
+    #     with:
+    #       working-directory: examples/config
+    #       build: npm run build
+    #       start: npm start
+    #       wait-on: 'http://localhost:3333'
+    #       config: baseUrl=http://localhost:3333
+
+  separate-specs-only-1:
+    # example where we pass specs to run via multiple lines
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cypress tests
+        uses: cypress-io/github-action@v5
+        with:
+          working-directory: examples/config
+          build: npm run build
+          start: npm start
+          wait-on: 'http://localhost:3333'
+          config: baseUrl=http://localhost:3333
+          spec: |
+            cypress/e2e/todo.cy.js
+
+  separate-specs-with-wildcard-startingWithTodo:
+    # example where we pass specs to run via multiple lines and wildcards
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cypress tests
+        uses: ./
+        with:
+          working-directory: examples/config
+          build: npm run build
+          start: npm start
+          wait-on: 'http://localhost:3333'
+          config: baseUrl=http://localhost:3333
+          spec: |
+            cypress/e2e/todo-*.cy.js
+
+# other wildcard options 
+  #  cypress/**/*.cy.js
+  #  cypress/**/*-2.cy.js

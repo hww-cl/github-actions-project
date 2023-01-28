@@ -9,4 +9,14 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
-          run: npx cypress run
+          runTests: npx cypress run
+
+      
+      # cypress-io/github-action@v5 will run npm install for us,
+      # properly cache Cypress (so that next time the installation is rapidly faster), 
+      # run our application using npm start command and run npx cypress run command for us. 
+      # All this with just four lines in our YAML file.
+
+
+       # valid parameters for cypress actions are 
+       #['record', 'config', 'config-file', 'env', 'browser', 'command', 'start', 'start-windows', 'build', 'install', 'install-command', 'runTests', 'wait-on', 'wait-on-timeout', 'parallel', 'group', 'tag', 'working-directory', 'headed', 'spec', 'project', 'command-prefix', 'ci-build-id', 'cache-key', 'quiet', 'component'] 
