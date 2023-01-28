@@ -31,13 +31,9 @@ jobs:
       - name: Cypress tests
         uses: cypress-io/github-action@v5
         with:
-          working-directory: examples/config
-          build: npm run build
-          start: npm start
-          wait-on: 'http://localhost:3333'
-          config: baseUrl=http://localhost:3333
-          spec: |
-            cypress/e2e/todo.cy.js
+          runTests: npx cypress run
+            spec: |
+              cypress/e2e/todo.cy.js
 
   separate-specs-with-wildcard-startingWithTodo:
     # example where we pass specs to run via multiple lines and wildcards
@@ -47,15 +43,11 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Cypress tests
-        uses: ./
+        uses: cypress-io/github-action@v5
         with:
-          working-directory: examples/config
-          build: npm run build
-          start: npm start
-          wait-on: 'http://localhost:3333'
-          config: baseUrl=http://localhost:3333
-          spec: |
-            cypress/e2e/todo-*.cy.js
+          runTests: npx cypress run
+            spec: |
+              cypress/e2e/todo-*.cy.js
 
 # other wildcard options 
   #  cypress/**/*.cy.js
