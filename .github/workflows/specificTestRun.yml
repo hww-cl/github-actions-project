@@ -32,8 +32,8 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           runTests: npx cypress run
-            spec: |
-              cypress/e2e/todo.cy.js
+          spec: |
+            cypress/e2e/todo.cy.js
 
   separate-specs-with-wildcard-startingWithTodo:
     # example where we pass specs to run via multiple lines and wildcards
@@ -46,8 +46,8 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           runTests: npx cypress run
-            spec: |
-              cypress/e2e/todo-*.cy.js
+          spec: |
+            cypress/e2e/todo-*.cy.js
 
 # other wildcard options 
   #  cypress/**/*.cy.js
